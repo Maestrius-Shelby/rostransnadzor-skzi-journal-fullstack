@@ -1,5 +1,10 @@
 # 🚀 Парсер Ространснадзор
 
+**Проектно-технологическая практика**
+
+**Автор:** © Жуков Кирилл Дмитриевич, 2026  
+**Лицензия:** GNU General Public License v3.0 (GPLv3)
+
 ### Автоматический сбор данных из личного кабинета
 ### Поддержка Windows и Linux (altLinux, Ubuntu, Debian)  
 ### Fullstack: Python + FastAPI + React SPA
