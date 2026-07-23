@@ -1,0 +1,153 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  height: 100vh; /* fallback */
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  position: relative;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* критически важно */
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at 30% 50%,
+      rgba(99, 102, 241, 0.03) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.content {
+  flex: 1;
+  min-height: 0; /* критически важно */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 32px 24px 24px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  animation: fadeInContent 0.6s ease-out;
+
+  // Отступ для скролла
+  scrollbar-gutter: stable;
+
+  // Адаптив для планшетов
+  @media (max-width: 1024px) {
+    padding: 20px 28px 20px 20px;
+  }
+
+  // Адаптив для мобильных
+  @media (max-width: 768px) {
+    padding: 16px 20px 16px 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 16px 12px 12px;
+  }
+}
+
+// Стилизация скролла для .content
+.content {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #64748b;
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+// Анимация появления контента
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Поддержка темной/светлой темы
+@media (prefers-color-scheme: light) {
+  .layout {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+
+  .content {
+    scrollbar-color: #cbd5e1 transparent;
+
+    &::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+
+      &:hover {
+        background: #94a3b8;
+      }
+    }
+  }
+}
+
+// Плавные переходы
+.layout,
+.main,
+.content {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Поддержка reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+
+  .layout,
+  .main,
+  .content {
+    transition: none;
+  }
+}
+
+// Улучшенная поддержка для мобильных браузеров
+@supports (-webkit-touch-callout: none) {
+  .layout {
+    min-height: -webkit-fill-available;
+  }
+}

@@ -1,0 +1,220 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: $font-family;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+
+  // Ripple эффект
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover:not(:disabled)::after {
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  // Variants
+  &.primary {
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba($primary, 0.3);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba($primary, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba($primary, 0.3);
+    }
+  }
+
+  &.success {
+    background: linear-gradient(135deg, $success 0%, $success-dark 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba($success, 0.3);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba($success, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &.danger {
+    background: linear-gradient(135deg, $danger 0%, $danger-dark 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba($danger, 0.3);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba($danger, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &.secondary {
+    background: rgba(51, 65, 85, 0.5);
+    color: $text-primary;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+
+    &:hover:not(:disabled) {
+      background: rgba(51, 65, 85, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.outline {
+    background: transparent;
+    color: $primary;
+    border: 2px solid $primary;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: $radius-md;
+      background: linear-gradient(135deg, $primary, $primary-light);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    &:hover:not(:disabled) {
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba($primary, 0.3);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+
+  &.ghost {
+    background: transparent;
+    color: $text-secondary;
+
+    &:hover:not(:disabled) {
+      background: rgba(51, 65, 85, 0.3);
+      color: $text-primary;
+      transform: translateY(-1px);
+    }
+  }
+
+  // Sizes
+  &.small {
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-xs;
+    border-radius: $radius-sm;
+    min-height: 32px;
+  }
+
+  &.medium {
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-sm;
+    min-height: 40px;
+  }
+
+  &.large {
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-md;
+    min-height: 48px;
+    border-radius: $radius-lg;
+  }
+
+  // Icon button
+  &.icon {
+    padding: $spacing-sm;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    &.small {
+      width: 32px;
+      height: 32px;
+      padding: $spacing-xs;
+    }
+
+    &.large {
+      width: 48px;
+      height: 48px;
+      padding: $spacing-md;
+    }
+  }
+}
+
+// Light theme support
+@media (prefers-color-scheme: light) {
+  .button {
+    &.secondary {
+      // background: rgba(226, 232, 240, 0.5);
+      border-color: rgba(203, 213, 225, 0.3);
+
+      &:hover:not(:disabled) {
+        background: rgba(203, 213, 225, 0.7);
+      }
+    }
+
+    &.ghost {
+      &:hover:not(:disabled) {
+        background: rgba(203, 213, 225, 0.3);
+      }
+    }
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none !important;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover:not(:disabled) {
+      transform: none !important;
+    }
+  }
+}

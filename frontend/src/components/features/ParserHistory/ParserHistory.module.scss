@@ -1,0 +1,440 @@
+.history {
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  animation: fadeIn 0.6s ease;
+}
+
+// ============================================
+// ЗАГОЛОВОК
+// ============================================
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-xl;
+  padding: $spacing-lg $spacing-xl;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: $radius-xl;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  gap: $spacing-lg;
+
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    flex-shrink: 0;
+
+    h2 {
+      font-size: $font-size-xl;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin: 0;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .count {
+      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.6);
+      padding: $spacing-xs $spacing-md;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: $radius-full;
+    }
+  }
+}
+
+// ============================================
+// КАРТОЧКА ИСТОРИИ
+// ============================================
+
+.historyCard {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $radius-xl;
+  padding: $spacing-xl $spacing-2xl;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  }
+}
+
+// ============================================
+// ЗАГРУЗКА
+// ============================================
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  padding: $spacing-2xl;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: $font-size-lg;
+
+  .loaderSpinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    border-top-color: #60a5fa;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+// ============================================
+// ПУСТОЕ СОСТОЯНИЕ
+// ============================================
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3xl $spacing-xl;
+  gap: $spacing-sm;
+
+  .emptyIcon {
+    font-size: $font-size-3xl;
+    opacity: 0.5;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .emptyHint {
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+// ============================================
+// ТАБЛИЦА
+// ============================================
+
+.tableWrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+  min-width: 800px;
+
+  thead {
+    tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    th {
+      padding: $spacing-md $spacing-md;
+      text-align: left;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
+      font-size: $font-size-xs;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: background 0.2s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.runningRow {
+        background: rgba(96, 165, 250, 0.05);
+        animation: pulseRow 2s ease-in-out infinite;
+      }
+    }
+
+    td {
+      padding: $spacing-md $spacing-md;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: $font-size-sm;
+      vertical-align: middle;
+    }
+  }
+}
+
+.recordCount {
+  font-weight: 600;
+  color: #60a5fa;
+}
+
+// ============================================
+// БЕЙДЖИ
+// ============================================
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  gap: $spacing-xs;
+  white-space: nowrap;
+
+  &.success {
+    background: rgba(34, 197, 94, 0.12);
+    color: #34d399;
+  }
+
+  &.running {
+    background: rgba(96, 165, 250, 0.12);
+    color: #60a5fa;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  &.error {
+    background: rgba(239, 68, 68, 0.12);
+    color: #fb7185;
+  }
+
+  &.stopped {
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+  }
+
+  &.idle {
+    background: rgba(148, 163, 184, 0.12);
+    color: #94a3b8;
+  }
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  gap: $spacing-xs;
+  white-space: nowrap;
+
+  &.mock {
+    background: rgba(59, 130, 246, 0.12);
+    color: #3b82f6;
+  }
+
+  &.real {
+    background: rgba(34, 197, 94, 0.12);
+    color: #34d399;
+  }
+}
+
+// ============================================
+// ФАЙЛЫ
+// ============================================
+
+.files {
+  display: flex;
+  gap: $spacing-sm;
+  align-items: center;
+}
+
+.fileLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xs;
+  border-radius: $radius-sm;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: $font-size-md;
+  transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f1f5f9;
+    transform: scale(1.05);
+  }
+}
+
+.noFiles {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: $font-size-sm;
+}
+
+// ============================================
+// АНИМАЦИИ
+// ============================================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulseRow {
+  0%,
+  100% {
+    background: rgba(96, 165, 250, 0.05);
+  }
+  50% {
+    background: rgba(96, 165, 250, 0.12);
+  }
+}
+
+// ============================================
+// СВЕТЛАЯ ТЕМА
+// ============================================
+
+@media (prefers-color-scheme: light) {
+  .header {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(203, 213, 225, 0.3);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+
+    .headerLeft {
+      h2 {
+        color: #1e293b;
+      }
+
+      .count {
+        background: rgba(241, 245, 249, 0.5);
+        color: #64748b;
+      }
+    }
+  }
+
+  .historyCard {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(203, 213, 225, 0.2);
+
+    &:hover {
+      border-color: rgba(203, 213, 225, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  .table {
+    tbody {
+      td {
+        color: #1e293b;
+      }
+    }
+  }
+
+  .recordCount {
+    color: #2563eb;
+  }
+
+  .badge {
+    &.success {
+      background: rgba(34, 197, 94, 0.08);
+      color: #16a34a;
+    }
+
+    &.running {
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+    }
+
+    &.error {
+      background: rgba(239, 68, 68, 0.08);
+      color: #dc2626;
+    }
+
+    &.stopped {
+      background: rgba(245, 158, 11, 0.08);
+      color: #d97706;
+    }
+
+    &.idle {
+      background: rgba(148, 163, 184, 0.08);
+      color: #64748b;
+    }
+  }
+
+  .typeBadge {
+    &.mock {
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+    }
+
+    &.real {
+      background: rgba(34, 197, 94, 0.08);
+      color: #16a34a;
+    }
+  }
+
+  .fileLink {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.4);
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.06);
+      border-color: rgba(0, 0, 0, 0.1);
+      color: #1e293b;
+    }
+  }
+
+  .noFiles {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  .empty {
+    p {
+      color: #64748b;
+    }
+
+    .emptyHint {
+      color: #94a3b8;
+    }
+  }
+}

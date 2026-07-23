@@ -1,0 +1,204 @@
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  width: 100%;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  .optional {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    font-weight: 400;
+  }
+
+  .required {
+    color: $danger;
+    font-weight: 700;
+  }
+}
+
+.input {
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  border: 2px solid rgba(51, 65, 85, 0.3);
+  background: rgba(15, 23, 42, 0.6);
+  color: #f1f5f9; /* Явно белый цвет для темной темы */
+  font-size: $font-size-md;
+  font-family: $font-family;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    opacity: 0.7;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: rgba(51, 65, 85, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 4px rgba($primary, 0.1);
+    background: rgba(15, 23, 42, 0.8);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  &.error {
+    border-color: $danger;
+
+    &:focus {
+      border-color: $danger;
+      box-shadow: 0 0 0 4px rgba($danger, 0.1);
+    }
+  }
+
+  &.success {
+    border-color: $success;
+
+    &:focus {
+      border-color: $success;
+      box-shadow: 0 0 0 4px rgba($success, 0.1);
+    }
+  }
+}
+
+.errorText {
+  font-size: $font-size-xs;
+  color: $danger;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+
+  &::before {
+    content: "⚠";
+    font-size: $font-size-sm;
+  }
+}
+
+.helperText {
+  font-size: $font-size-xs;
+  color: $text-muted;
+  margin-top: $spacing-xs;
+}
+
+.small {
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-sm;
+  border-radius: $radius-sm;
+}
+
+.medium {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-md;
+}
+
+.large {
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-lg;
+  border-radius: $radius-lg;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+
+  .input {
+    padding-left: 36px;
+  }
+
+  .iconLeft {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-muted;
+    pointer-events: none;
+  }
+
+  .iconRight {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-muted;
+    cursor: pointer;
+  }
+}
+
+// ============================================
+// СВЕТЛАЯ ТЕМА - ЯВНЫЕ ЦВЕТА
+// ============================================
+
+@media (prefers-color-scheme: light) {
+  .input {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(203, 213, 225, 0.5);
+    color: #1e293b; /* Явно темный цвет для светлой темы */
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: rgba(203, 213, 225, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 4px rgba($primary, 0.1);
+      background: #ffffff;
+    }
+
+    &.error {
+      border-color: $danger;
+
+      &:focus {
+        border-color: $danger;
+        box-shadow: 0 0 0 4px rgba($danger, 0.1);
+      }
+    }
+
+    &.success {
+      border-color: $success;
+
+      &:focus {
+        border-color: $success;
+        box-shadow: 0 0 0 4px rgba($success, 0.1);
+      }
+    }
+  }
+
+  .label {
+    color: #64748b;
+  }
+}
+
+// ============================================
+// REDUCED MOTION
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  .input {
+    transition: none !important;
+  }
+}

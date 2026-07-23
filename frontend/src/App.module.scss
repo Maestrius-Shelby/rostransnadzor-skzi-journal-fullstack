@@ -1,0 +1,10 @@
+// НЕ НУЖНО импортировать variables.scss,
+// потому что это уже сделано в vite.config.js
+
+.app {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

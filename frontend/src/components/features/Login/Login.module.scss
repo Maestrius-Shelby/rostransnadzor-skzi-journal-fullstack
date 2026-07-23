@@ -1,0 +1,384 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: $spacing-lg;
+  background:
+    radial-gradient(
+      ellipse at top,
+      rgba(37, 99, 235, 0.08) 0%,
+      transparent 60%
+    ),
+    $bg-primary;
+}
+
+// ============================================
+// КАРТОЧКА
+// ============================================
+.loginCard {
+  width: 420px;
+  padding: $spacing-2xl $spacing-3xl;
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: $radius-xl !important;
+  box-shadow: $shadow-xl;
+  animation: slideUp 0.5s ease;
+}
+
+// ============================================
+// ЗАГОЛОВОК
+// ============================================
+.loginHeader {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.loginIcon {
+  font-size: 3rem;
+  margin-bottom: $spacing-sm;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.loginHeader h2 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin: 0 0 $spacing-xs;
+}
+
+.loginSubtitle {
+  font-size: $font-size-sm;
+  color: $text-muted;
+  margin: 0;
+}
+
+// ============================================
+// ФОРМА
+// ============================================
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-secondary;
+}
+
+.labelIcon {
+  font-size: 1rem;
+}
+
+.input {
+  width: 100%;
+  height: $input-height;
+  padding: 0 $input-padding-x;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid $border-color;
+  border-radius: $input-border-radius;
+  color: $text-primary;
+  font-size: $font-size-sm;
+  transition: all $transition-normal;
+  outline: none;
+
+  &:focus {
+    border-color: $primary;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.inputError {
+  border-color: $danger !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+}
+
+.errorMessage {
+  font-size: $font-size-xs;
+  color: $danger-light;
+  padding-left: 4px;
+}
+
+// ============================================
+// ПАРОЛЬ
+// ============================================
+.passwordWrapper {
+  position: relative;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.6;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// ============================================
+// ОШИБКА
+// ============================================
+.authError {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: $radius-md;
+  color: $danger-light;
+  font-size: $font-size-sm;
+  animation: shake 0.4s ease;
+}
+
+// ============================================
+// КНОПКА
+// ============================================
+.submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, $primary, #6366f1);
+  color: #ffffff;
+  border: none;
+  border-radius: $button-border-radius;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  transition: all $transition-normal;
+  margin-top: $spacing-sm;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.4);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btnIcon {
+  font-size: 1.1rem;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+// ============================================
+// ПОДСКАЗКА
+// ============================================
+.hint {
+  text-align: center;
+  margin-top: $spacing-lg;
+  font-size: $font-size-xs;
+  color: $text-muted;
+}
+
+// ============================================
+// УСПЕШНЫЙ ВХОД
+// ============================================
+.successCard {
+  width: 420px;
+  padding: $spacing-3xl;
+  text-align: center;
+  background: rgba(34, 197, 94, 0.06) !important;
+  border: 1px solid rgba(34, 197, 94, 0.15) !important;
+  animation: slideUp 0.5s ease;
+}
+
+.successIcon {
+  font-size: 4rem;
+  margin-bottom: $spacing-md;
+  animation: bounce 0.6s ease;
+}
+
+.successCard h2 {
+  font-size: $font-size-xl;
+  color: $success-light;
+  margin: 0 0 $spacing-sm;
+}
+
+.successRole {
+  margin: $spacing-sm 0;
+}
+
+.adminBadge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.2),
+    rgba(239, 68, 68, 0.2)
+  );
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: $radius-full;
+  color: $warning-light;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-md;
+}
+
+.successHint {
+  color: $text-muted;
+  font-size: $font-size-sm;
+  margin: $spacing-md 0;
+}
+
+.successBar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: $radius-full;
+  overflow: hidden;
+
+  .successFill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, $success-light, $success);
+    animation: progress 0.8s ease;
+  }
+}
+
+// ============================================
+// АНИМАЦИИ
+// ============================================
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+// ============================================
+// СВЕТЛАЯ ТЕМА
+// ============================================
+@media (prefers-color-scheme: light) {
+  .login {
+    background:
+      radial-gradient(
+        ellipse at top,
+        rgba(37, 99, 235, 0.04) 0%,
+        transparent 60%
+      ),
+      #f8fafc;
+  }
+
+  .loginCard {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(203, 213, 225, 0.4) !important;
+  }
+
+  .loginHeader h2 {
+    color: $primary-dark;
+  }
+  .loginSubtitle {
+    color: $secondary;
+  }
+  .label {
+    color: $secondary-dark;
+  }
+
+  .input {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: $border-color;
+    color: $text-inverse;
+
+    &:focus {
+      background: #ffffff;
+    }
+  }
+}

@@ -1,0 +1,191 @@
+// ============================================
+// ЦВЕТА
+// ============================================
+
+// Основные цвета
+$primary: #2563eb;
+$primary-dark: #1d4ed8;
+$primary-light: #3b82f6;
+
+$secondary: #64748b;
+$secondary-dark: #475569;
+$secondary-light: #94a3b8;
+
+// Семантические цвета
+$success: #22c55e;
+$success-dark: #16a34a;
+$success-light: #4ade80;
+
+$danger: #ef4444;
+$danger-dark: #dc2626;
+$danger-light: #f87171;
+
+$warning: #f59e0b;
+$warning-dark: #d97706;
+$warning-light: #fbbf24;
+
+$info: #3b82f6;
+$info-dark: #2563eb;
+$info-light: #60a5fa;
+
+// Фоновые цвета (темная тема)
+$bg-primary: #0f172a; // основной фон
+$bg-secondary: #1e293b; // вторичный фон (карточки, сайдбар)
+$bg-card: #1e293b; // фон карточек
+$bg-hover: #334155; // фон при наведении
+$bg-active: #1e293b; // фон активных элементов
+
+// Цвета текста
+$text-primary: #f1f5f9; // основной текст
+$text-secondary: #94a3b8; // вторичный текст
+$text-muted: #64748b; // приглушенный текст
+$text-inverse: #0f172a; // инверсный текст
+
+// Цвета границ
+$border-color: #334155; // цвет границ
+$border-light: #1e293b; // светлые границы
+$border-dark: #0f172a; // темные границы
+
+// ============================================
+// ОТСТУПЫ (Spacing)
+// ============================================
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+$spacing-4xl: 80px;
+
+// ============================================
+// СКРУГЛЕНИЯ (Border Radius)
+// ============================================
+
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-full: 9999px;
+
+// ============================================
+// ТИПОГРАФИКА (Typography)
+// ============================================
+
+// Noto Color Emoji — в КОНЦЕ, чтобы не ломать цифры, на Linux.
+$font-family:
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Oxygen,
+  Ubuntu,
+  Cantarell,
+  "Noto Color Emoji",
+  sans-serif;
+$font-family-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+
+// Размеры шрифтов
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+$font-size-2xl: 32px;
+$font-size-3xl: 40px;
+$font-size-4xl: 48px;
+
+// Толщина шрифтов
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Высота строки
+$line-height-tight: 1.1;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ============================================
+// ТЕНИ (Shadows)
+// ============================================
+
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg:
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl:
+  0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// ============================================
+// АНИМАЦИИ (Transitions)
+// ============================================
+
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow: 350ms ease;
+$transition-slower: 500ms ease;
+
+// ============================================
+// МЕДИА-ЗАПРОСЫ (Breakpoints)
+// ============================================
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ============================================
+// Z-INDEX
+// ============================================
+
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// ============================================
+// КОМПОНЕНТЫ
+// ============================================
+
+// Header
+$header-height: 64px;
+$header-height-mobile: 56px;
+
+// Sidebar
+$sidebar-width: 240px;
+$sidebar-width-collapsed: 72px;
+$sidebar-width-mobile: 0;
+
+// Footer
+$footer-height: 60px;
+$footer-height-mobile: 56px;
+
+// Карточки
+$card-padding: $spacing-lg;
+$card-border-radius: $radius-lg;
+
+// Кнопки
+$button-padding-y: $spacing-sm;
+$button-padding-x: $spacing-lg;
+$button-border-radius: $radius-md;
+
+// Инпуты
+$input-height: 40px;
+$input-padding-x: $spacing-md;
+$input-border-radius: $radius-md;
+$input-border-color: $border-color;

@@ -1,0 +1,1528 @@
+// ============================================
+// ПЕРЕМЕННЫЕ
+// ============================================
+$font-xs: 0.72rem;
+$font-sm: 0.8rem;
+$font-md: 0.9rem;
+$font-lg: 1.2rem;
+$font-xl: 1.4rem;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 20px;
+$spacing-xl: 24px;
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-full: 50px;
+$transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Цвета
+$accent: #3b82f6;
+$accent-hover: #2563eb;
+$danger: #ef4444;
+$danger-hover: #dc2626;
+$success: #22c55e;
+$warning: #f59e0b;
+$purple: #8b5cf6;
+$purple-hover: #7c3aed;
+
+$bg-dark: #0f172a;
+$surface-dark: #1e293b;
+$border-dark: #334155;
+$text-primary: #f1f5f9;
+$text-secondary: #94a3b8;
+
+$bg-light: #f8fafc;
+$surface-light: #ffffff;
+$border-light: #e2e8f0;
+$text-light: #0f172a;
+$text-light-secondary: #64748b;
+
+// ============================================
+// БАЗОВЫЙ КОНТЕЙНЕР
+// ============================================
+.dataTable {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  min-height: 100vh;
+  background: $bg-dark;
+  border-radius: 16px;
+}
+
+// ============================================
+// ВЕРХНЯЯ ПАНЕЛЬ
+// ============================================
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  padding: $spacing-lg $spacing-xl;
+  background: $surface-dark;
+  border-radius: $radius-xl;
+  border: 1px solid $border-dark;
+}
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: $font-xl;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.totalCount {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 14px;
+  border-radius: $radius-full;
+  font-size: $font-xs;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.selectionBadge {
+  background: $accent;
+  color: #ffffff;
+  padding: 5px 14px;
+  border-radius: $radius-full;
+  font-size: $font-xs;
+  font-weight: 700;
+  animation: fadeIn 0.3s ease;
+}
+
+.searchInput {
+  min-width: 280px;
+  flex: 1;
+  max-width: 400px;
+
+  :global(.input) {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    font-size: $font-sm !important;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35) !important;
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.12) !important;
+      border-color: $accent !important;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+    }
+  }
+}
+
+// ============================================
+// ПАНЕЛЬ ДЕЙСТВИЙ
+// ============================================
+.actionBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.actionBarLeft,
+.actionBarRight {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+// ============================================
+// БЫСТРЫЕ ФИЛЬТРЫ
+// ============================================
+.quickFilters {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: $radius-full;
+  cursor: pointer;
+  font-size: $font-xs;
+  font-weight: 600;
+  transition: $transition;
+  background: $surface-dark;
+  color: #cbd5e1;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.filterExpired {
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #f87171;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: $danger;
+  }
+
+  &.filterActive {
+    background: $danger !important;
+    color: #ffffff !important;
+    border-color: $danger !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  }
+}
+
+.filterExpiring {
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+
+  &:hover {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: $warning;
+  }
+
+  &.filterActive {
+    background: $warning !important;
+    color: #ffffff !important;
+    border-color: $warning !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  }
+}
+
+.filterNew {
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+
+  &:hover {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: $success;
+  }
+
+  &.filterActive {
+    background: $success !important;
+    color: #ffffff !important;
+    border-color: $success !important;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  }
+}
+
+.filterCount {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.clearFilterBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: $font-xs;
+  padding: 8px 14px;
+  border-radius: $radius-full;
+  font-weight: 500;
+  transition: $transition;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+// ============================================
+// КНОПКИ ДЕЙСТВИЙ
+// ============================================
+.importBtn {
+  background: $purple !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  font-size: $font-xs !important;
+  border-radius: $radius-md !important;
+  transition: $transition;
+
+  &:hover {
+    background: $purple-hover !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  }
+}
+
+.selectBtn {
+  background: $surface-dark !important;
+  color: #cbd5e1 !important;
+  border: 1.5px solid $border-dark !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  font-size: $font-xs !important;
+  border-radius: $radius-md !important;
+  transition: $transition;
+
+  &:hover {
+    background: $accent !important;
+    color: #ffffff !important;
+    border-color: $accent !important;
+  }
+}
+
+.selectBtnActive {
+  background: $accent !important;
+  color: #ffffff !important;
+  border-color: $accent !important;
+
+  &:hover {
+    background: $accent-hover !important;
+    border-color: $accent-hover !important;
+  }
+}
+
+// ============================================
+// КАРТОЧКА ТАБЛИЦЫ
+// ============================================
+.tableCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  position: relative;
+  min-height: 0;
+}
+
+.tableContainer {
+  flex: 1;
+  overflow: auto;
+  // ✅ Увеличена высота таблицы
+  max-height: calc(100vh - 250px);
+  min-height: 300px;
+  position: relative; // Для sticky кнопки
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $border-dark;
+    border-radius: 3px;
+
+    &:hover {
+      background: #475569;
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+// ============================================
+// ТАБЛИЦА
+// ============================================
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-xs;
+  min-width: 1400px;
+}
+
+// ============================================
+// ЗАГОЛОВОК ТАБЛИЦЫ
+// ============================================
+.tableHead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  th {
+    background: #1a2332;
+    padding: 10px 8px;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 2px solid $accent;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+// ============================================
+// КОЛОНКИ
+// ============================================
+.colCheck {
+  width: 40px;
+  text-align: center;
+}
+.colNum {
+  width: 40px;
+  text-align: center;
+}
+.colDate {
+  width: 120px;
+}
+.colSkzi {
+  width: 140px;
+}
+.colService {
+  width: 130px;
+}
+.colFio {
+  width: 170px;
+  min-width: 140px;
+}
+.colKeyType {
+  width: 80px;
+}
+.colSerial {
+  width: 140px;
+}
+
+// Центрированные колонки — заголовки
+.colCarrier,
+.colDestructionDate,
+.colSign,
+.colNotes,
+.colStatus {
+  text-align: center !important;
+}
+
+.colCarrier {
+  width: 110px;
+}
+.colDestructionDate {
+  width: 115px;
+}
+.colSign {
+  width: 100px;
+}
+.colNotes {
+  width: 130px;
+}
+.colStatus {
+  width: 120px;
+}
+
+// ============================================
+// ✅ ЕДИНЫЙ КЛАСС ДЛЯ ЦЕНТРИРОВАННЫХ ЯЧЕЕК
+// ============================================
+.centeredCell {
+  text-align: center !important;
+}
+
+// ============================================
+// СТРОКИ ТАБЛИЦЫ
+// ============================================
+.tableRow {
+  transition: background 0.15s ease;
+
+  td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: middle;
+    color: #e2e8f0;
+    font-size: $font-xs;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+}
+
+// ❌ УДАЛИТЬ все nth-child центрирования — заменены на .centeredCell
+
+.rowEven {
+  background: rgba(255, 255, 255, 0.01);
+}
+.rowOdd {
+  background: transparent;
+}
+
+// Цвета строк
+.rowNew {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border-left: 3px solid $success;
+  &:hover {
+    background: rgba(34, 197, 94, 0.14) !important;
+  }
+}
+
+.rowExpiring {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-left: 3px solid $warning;
+  &:hover {
+    background: rgba(245, 158, 11, 0.14) !important;
+  }
+}
+
+.rowExpired {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border-left: 3px solid $danger;
+  &:hover {
+    background: rgba(239, 68, 68, 0.14) !important;
+  }
+}
+
+.rowMock {
+  background: rgba(139, 92, 246, 0.06) !important;
+  border-left: 3px solid $purple;
+  &:hover {
+    background: rgba(139, 92, 246, 0.12) !important;
+  }
+}
+
+.rowSelected {
+  background: rgba(59, 130, 246, 0.15) !important;
+  outline: 2px solid $accent;
+  outline-offset: -2px;
+}
+
+// ============================================
+// ЯЧЕЙКИ
+// ============================================
+.fioName {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.dateValue {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+
+.daysLeft {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.daysLeftWarning {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.daysLeftDanger {
+  background: rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.daysLeftOk {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.serialCode {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  color: #cbd5e1;
+}
+
+.notesCell {
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #94a3b8;
+  font-style: italic;
+  text-align: center !important; // ✅ Центрирование примечания
+}
+
+.emptyField {
+  color: rgba(255, 255, 255, 0.15);
+  font-style: normal;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: $accent;
+}
+
+// ============================================
+// СТАТУС БАДЖ
+// ============================================
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: $radius-full;
+  font-size: 0.65rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badgeNew {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badgeExpiring {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badgeExpired {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badgeActive {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badgeMock {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+// ============================================
+// СОСТОЯНИЯ
+// ============================================
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+  color: #94a3b8;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.emptyText {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.emptyHint {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+// ============================================
+// НИЖНЯЯ ПАНЕЛЬ
+// ============================================
+.footerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footerInfo {
+  font-size: $font-xs;
+  color: #64748b;
+}
+
+.footerLegend {
+  display: flex;
+  gap: 16px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.dotNew {
+  background: $success;
+}
+.dotExpiring {
+  background: $warning;
+}
+.dotExpired {
+  background: $danger;
+}
+
+// ============================================
+// ✅ КНОПКА "НАВЕРХ" — sticky внутри таблицы
+// ============================================
+.scrollTopBtn {
+  position: sticky;
+  bottom: 24px;
+  // Центрирование по горизонтали
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -56px;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  // Градиентный фон
+  background: linear-gradient(135deg, $accent 0%, #6366f1 100%);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  // Тени
+  box-shadow:
+    0 4px 20px rgba(59, 130, 246, 0.4),
+    0 0 0 0 rgba(59, 130, 246, 0.5);
+
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Плавные анимации
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation:
+    fadeInUp 0.4s ease,
+    pulse 2s infinite;
+
+  // Стрелка вверх
+  &::after {
+    content: "↑";
+    line-height: 1;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, $accent-hover 0%, #4f46e5 100%);
+    transform: translateX(-50%) translateY(-4px) scale(1.05);
+    box-shadow:
+      0 8px 30px rgba(59, 130, 246, 0.6),
+      0 0 0 8px rgba(59, 130, 246, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+
+    &::after {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:active {
+    transform: translateX(-50%) translateY(-1px) scale(0.95);
+    box-shadow:
+      0 2px 10px rgba(59, 130, 246, 0.4),
+      0 0 0 4px rgba(59, 130, 246, 0.15);
+  }
+}
+
+// Анимация появления
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Анимация пульсации
+@keyframes pulse {
+  0% {
+    box-shadow:
+      0 4px 20px rgba(59, 130, 246, 0.4),
+      0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  70% {
+    box-shadow:
+      0 4px 20px rgba(59, 130, 246, 0.4),
+      0 0 0 12px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow:
+      0 4px 20px rgba(59, 130, 246, 0.4),
+      0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+@media (min-width: 1920px) {
+  .table {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1919px) {
+  .table {
+    min-width: 1400px;
+  }
+}
+
+@media (max-width: 1399px) {
+  .table {
+    min-width: 1300px;
+  }
+
+  .topBar {
+    padding: $spacing-md $spacing-lg;
+  }
+
+  .searchInput {
+    min-width: 250px;
+    max-width: 350px;
+  }
+
+  // Уменьшаем высоту таблицы на меньших экранах
+  .tableContainer {
+    max-height: calc(100vh - 280px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .dataTable {
+    padding: $spacing-md;
+    gap: $spacing-sm;
+  }
+
+  .topBar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: $spacing-md;
+    gap: $spacing-sm;
+  }
+
+  .topBarLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-lg;
+  }
+
+  .searchInput {
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .actionBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-sm;
+  }
+
+  .actionBarLeft,
+  .actionBarRight {
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
+
+  .quickFilters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+  }
+
+  .filterBtn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .table {
+    min-width: 900px;
+  }
+
+  .tableHead th {
+    padding: 8px 6px;
+    font-size: 0.65rem;
+  }
+
+  .tableRow td {
+    padding: 6px;
+    font-size: 0.7rem;
+  }
+
+  .tableContainer {
+    max-height: calc(100vh - 320px);
+  }
+
+  .scrollTopBtn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dataTable {
+    padding: $spacing-sm;
+    gap: $spacing-xs;
+  }
+
+  .topBar {
+    padding: $spacing-sm;
+    border-radius: $radius-lg;
+    gap: $spacing-xs;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .totalCount,
+  .selectionBadge {
+    font-size: 0.65rem;
+    padding: 3px 10px;
+  }
+
+  .searchInput {
+    :global(.input) {
+      font-size: 0.75rem !important;
+      padding: 8px 12px !important;
+    }
+  }
+
+  .actionBar {
+    gap: $spacing-xs;
+  }
+
+  .filterBtn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .importBtn,
+  .selectBtn {
+    padding: 6px 14px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .table {
+    min-width: 700px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .tableHead th {
+    padding: 6px 4px;
+    font-size: 0.6rem;
+    letter-spacing: 0.2px;
+  }
+
+  .tableRow td {
+    padding: 5px 4px;
+    font-size: 0.65rem;
+  }
+
+  .fioName {
+    font-size: 0.7rem;
+  }
+
+  .statusBadge {
+    padding: 2px 6px;
+    font-size: 0.6rem;
+  }
+
+  .tableContainer {
+    max-height: calc(100vh - 350px);
+  }
+
+  .footerBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .footerLegend {
+    gap: 10px;
+  }
+
+  .legendItem {
+    font-size: 0.65rem;
+  }
+
+  .scrollTopBtn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    bottom: 16px;
+    margin-top: -48px;
+  }
+}
+
+// ============================================
+// СВЕТЛАЯ ТЕМА
+// ============================================
+@media (prefers-color-scheme: light) {
+  .dataTable {
+    background: $bg-light;
+  }
+
+  .topBar {
+    background: $surface-light;
+    border-color: $border-light;
+  }
+
+  .title {
+    color: $text-light;
+  }
+
+  .totalCount {
+    background: $bg-light;
+    color: $text-light-secondary;
+  }
+
+  .searchInput {
+    :global(.input) {
+      background: $surface-light !important;
+      border-color: $border-light !important;
+      color: $text-light !important;
+
+      &::placeholder {
+        color: #94a3b8 !important;
+      }
+
+      &:focus {
+        border-color: $accent !important;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+      }
+    }
+  }
+
+  .actionBar {
+    background: transparent;
+  }
+
+  .filterBtn {
+    background: $surface-light;
+
+    &.filterExpired {
+      border-color: rgba(239, 68, 68, 0.3);
+      color: #dc2626;
+      &:hover {
+        background: rgba(239, 68, 68, 0.05);
+      }
+    }
+
+    &.filterExpiring {
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #d97706;
+      &:hover {
+        background: rgba(245, 158, 11, 0.05);
+      }
+    }
+
+    &.filterNew {
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #16a34a;
+      &:hover {
+        background: rgba(34, 197, 94, 0.05);
+      }
+    }
+  }
+
+  .clearFilterBtn {
+    color: #64748b;
+    border-color: $border-light;
+    &:hover {
+      background: #f1f5f9;
+      color: $text-light;
+    }
+  }
+
+  .selectBtn {
+    background: $surface-light !important;
+    color: $text-light-secondary !important;
+    border-color: $border-light !important;
+    &:hover {
+      background: $accent !important;
+      color: #ffffff !important;
+      border-color: $accent !important;
+    }
+  }
+
+  .selectBtnActive {
+    background: $accent !important;
+    color: #ffffff !important;
+  }
+
+  .tableCard {
+    background: transparent !important;
+  }
+
+  .tableHead th {
+    background: #f1f5f9;
+    color: $text-light;
+    border-bottom: 2px solid $accent;
+  }
+
+  .tableRow {
+    td {
+      border-bottom-color: #f1f5f9;
+      color: $text-light;
+    }
+    &:hover {
+      background: #f8fafc !important;
+    }
+  }
+
+  .rowEven {
+    background: #ffffff;
+  }
+  .rowOdd {
+    background: #fafbfd;
+  }
+  .rowNew {
+    background: #f0fdf4 !important;
+  }
+  .rowExpiring {
+    background: #fffbeb !important;
+  }
+  .rowExpired {
+    background: #fef2f2 !important;
+  }
+  .rowSelected {
+    background: #eff6ff !important;
+    outline-color: $accent;
+  }
+
+  .fioName {
+    color: $text-light;
+  }
+  .dateValue {
+    color: #475569;
+  }
+
+  .daysLeftWarning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #92400e;
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+
+  .daysLeftDanger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #991b1b;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .daysLeftOk {
+    background: rgba(34, 197, 94, 0.15);
+    color: #166534;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .serialCode {
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .emptyField {
+    color: #cbd5e1;
+  }
+
+  .statusBadge {
+    &.badgeNew {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+    &.badgeExpiring {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    &.badgeExpired {
+      background: #fee2e2;
+      color: #991b1b;
+      border-color: #fecaca;
+    }
+    &.badgeActive {
+      background: #dbeafe;
+      color: #1e40af;
+      border-color: #bfdbfe;
+    }
+  }
+
+  .footerBar {
+    border-top-color: $border-light;
+  }
+  .footerInfo {
+    color: #64748b;
+  }
+  .legendItem {
+    color: #64748b;
+  }
+
+  .scrollTopBtn {
+    background: linear-gradient(135deg, $accent 0%, #6366f1 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, $accent-hover 0%, #4f46e5 100%);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+// ============================================
+// REDUCED MOTION
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+  .scrollTopBtn,
+  .filterBtn,
+  .tableRow,
+  .selectBtn,
+  .importBtn {
+    transition: none !important;
+    animation: fadeInUp 0.4s ease !important;
+  }
+}
+
+// ============================================
+// ПОДСКАЗКА ПО ГОРЯЧИМ КЛАВИШАМ
+// ============================================
+.shortcutsBar {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-lg;
+  background: rgba(96, 165, 250, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: $radius-lg;
+  animation: slideDown 0.3s ease;
+  flex-wrap: wrap;
+
+  .shortcutsIcon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .shortcutsText {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: $font-xs;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+
+    strong {
+      color: #ffffff;
+      font-weight: 600;
+      margin-right: $spacing-xs;
+    }
+
+    .shortcutKey {
+      padding: 2px 8px;
+      background: rgba(96, 165, 250, 0.15);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      border-radius: $radius-sm;
+      font-size: 0.7rem;
+      color: #93c5fd;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+
+  .shortcutsClose {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: $spacing-xs;
+    border-radius: $radius-sm;
+    transition: $transition;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+.showShortcutsBtn {
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
+  font-size: $font-xs;
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  transition: $transition;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba(96, 165, 250, 0.2);
+    color: #ffffff;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Светлая тема
+@media (prefers-color-scheme: light) {
+  .shortcutsBar {
+    background: rgba(37, 99, 235, 0.04);
+    border-color: rgba(37, 99, 235, 0.1);
+
+    .shortcutsText {
+      color: #475569;
+      strong {
+        color: #1e293b;
+      }
+      .shortcutKey {
+        background: rgba(37, 99, 235, 0.1);
+        border-color: rgba(37, 99, 235, 0.2);
+        color: #2563eb;
+      }
+    }
+
+    .shortcutsClose {
+      color: #94a3b8;
+      &:hover {
+        color: #475569;
+        background: rgba(0, 0, 0, 0.03);
+      }
+    }
+  }
+
+  .showShortcutsBtn {
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.15);
+    color: #2563eb;
+    &:hover {
+      background: rgba(37, 99, 235, 0.12);
+    }
+  }
+}
+
+// ============================================
+// СОРТИРОВКА — ЯРКИЕ ЗАМЕТНЫЕ СТРЕЛКИ
+// ============================================
+.sortArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  font-size: 0.85rem;
+  opacity: 0.4;
+  transition: all 0.25s ease;
+  user-select: none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.sortActive {
+  opacity: 1;
+  color: #ffffff;
+  background: $accent;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  transform: scale(1.1);
+}
+
+.sortOrder {
+  font-size: 0.5rem;
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: $accent;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tableHead th {
+  white-space: nowrap;
+  padding: 10px 8px;
+
+  &[onclick] {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $accent;
+
+      .sortArrow {
+        opacity: 0.9;
+        background: rgba(59, 130, 246, 0.2);
+        color: #ffffff;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+// ============================================
+// КНОПКА СБРОСА СОРТИРОВКИ — в стиле фильтров
+// ============================================
+.clearSortBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: $radius-full;
+  cursor: pointer;
+  font-size: $font-xs;
+  font-weight: 600;
+  transition: $transition;
+  background: transparent;
+  color: #60a5fa;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.15);
+    color: #ffffff;
+    border-color: $accent;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  }
+}
+
+// Светлая тема для сортировки
+@media (prefers-color-scheme: light) {
+  .sortArrow {
+    background: rgba(0, 0, 0, 0.05);
+    opacity: 0.35;
+  }
+
+  .sortActive {
+    background: $accent;
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  .tableHead th[onclick]:hover {
+    .sortArrow {
+      background: rgba(37, 99, 235, 0.15);
+    }
+  }
+
+  .clearSortBtn {
+    border-color: rgba(37, 99, 235, 0.2);
+    color: #2563eb;
+
+    &:hover {
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+    }
+  }
+}

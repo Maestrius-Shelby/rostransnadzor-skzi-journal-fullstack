@@ -1,0 +1,61 @@
+.dashboard {
+  padding: $spacing-sm $spacing-lg;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: $radius-md;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.6);
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.online {
+    background: #34d399;
+  }
+  &.offline {
+    background: #fb7185;
+  }
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.hint {
+  margin-left: auto;
+  font-size: $font-size-xs;
+  color: rgba(255, 255, 255, 0.3);
+
+  code {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 1px 6px;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .statusRow {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(203, 213, 225, 0.2);
+    color: #64748b;
+  }
+  .hint {
+    color: #94a3b8;
+    code {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+}

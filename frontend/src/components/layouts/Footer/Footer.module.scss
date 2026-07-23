@@ -1,0 +1,256 @@
+.footer {
+  height: 60px;
+  flex-shrink: 0;
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(51, 65, 85, 0.6);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  // Тонкий градиентный эффект сверху
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(37, 99, 235, 0.3) 20%,
+      rgba(37, 99, 235, 0.8) 50%,
+      rgba(37, 99, 235, 0.3) 80%,
+      transparent 100%
+    );
+    opacity: 0.6;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  // Декоративный элемент
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.05) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #94a3b8;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  // Левая часть с копирайтом
+  span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #94a3b8;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #f1f5f9;
+    }
+
+    // Иконка сердца или точки
+    &::before {
+      content: "✦";
+      font-size: 10px;
+      color: #3b82f6;
+      opacity: 0.6;
+    }
+  }
+}
+
+.version {
+  background: rgba(51, 65, 85, 0.5);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(51, 65, 85, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+
+  // Эффект свечения при наведении
+  &:hover {
+    color: #f1f5f9;
+    border-color: rgba(37, 99, 235, 0.3);
+    background: rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+  }
+
+  // Точка статуса
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    margin-right: 6px;
+    vertical-align: middle;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+}
+
+// Анимация пульсации для статусной точки
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+}
+
+// Анимация для градиентной линии
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+// Адаптив для мобильных
+@media (max-width: 768px) {
+  .footer {
+    height: 56px;
+    padding: 0 16px;
+  }
+
+  .container {
+    font-size: 13px;
+
+    span:first-child {
+      font-size: 13px;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .version {
+    font-size: 10px;
+    padding: 3px 10px;
+
+    &::before {
+      width: 5px;
+      height: 5px;
+      margin-right: 4px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    height: 50px;
+    padding: 0 12px;
+  }
+
+  .container {
+    font-size: 12px;
+    padding: 0 4px;
+
+    span:first-child {
+      font-size: 12px;
+    }
+  }
+
+  .version {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+}
+
+// Поддержка темной/светлой темы
+@media (prefers-color-scheme: light) {
+  .footer {
+    background: rgba(248, 250, 252, 0.95);
+    border-top-color: rgba(226, 232, 240, 0.8);
+
+    &::before {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(37, 99, 235, 0.2) 20%,
+        rgba(37, 99, 235, 0.6) 50%,
+        rgba(37, 99, 235, 0.2) 80%,
+        transparent 100%
+      );
+    }
+  }
+
+  .container {
+    color: #64748b;
+
+    span:first-child {
+      color: #64748b;
+
+      &:hover {
+        color: #1e293b;
+      }
+    }
+  }
+
+  .version {
+    background: rgba(226, 232, 240, 0.5);
+    border-color: rgba(203, 213, 225, 0.5);
+    color: #64748b;
+
+    &:hover {
+      color: #1e293b;
+      border-color: rgba(37, 99, 235, 0.2);
+      background: rgba(37, 99, 235, 0.05);
+    }
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .footer::before {
+    animation: none;
+  }
+
+  .version::before {
+    animation: none;
+  }
+}
