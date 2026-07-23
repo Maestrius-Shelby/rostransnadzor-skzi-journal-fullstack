@@ -1,6 +1,6 @@
 # 🚀 Парсер Ространснадзор
 
-> Автоматический сбор данных из личного кабинета [***.*******.**](https://***.*******.**) 
+> Автоматический сбор данных из личного кабинета
 > Поддержка Windows и Linux (altLinux, Ubuntu, Debian)  
 > Fullstack: Python + FastAPI + React SPA
 
@@ -25,6 +25,11 @@
 ---
 
 ## 📁 Структура проекта
+
+<details>
+<summary><b>Развернуть полную структуру проекта</b></summary>
+
+```text
 
 📦 rostransnadzor-parser/
 │
@@ -312,6 +317,9 @@
 │ └── ⚙️ vite.config.js # Конфигурация сборщика Vite
 │
 └── 📄 README.md # 📖 Документация проекта
+```
+
+</details>
 
 ---
 
@@ -402,12 +410,12 @@ cp frontend/.env.example frontend/.env
 
 ## 🚀 Установка и запуск
 
-### 🪟 Windows
+### Windows
 
 #### Backend
 
 <details>
-<summary><b>📌 Пошаговая инструкция</b></summary>
+<summary><b>📌 Установка и запуск Backend</b></summary>
 
 ```bash
 # 1. Переход в папку проекта
@@ -435,7 +443,11 @@ python main_windows.py
 
 </details>
 
-<details> <summary><b>📌 Пошаговая инструкция</b></summary>
+## 🐧 Linux (ALT Linux / Ubuntu / Debian)
+
+### Backend
+
+<details> <summary><b>📌 Установка и запуск Backend</b></summary>
 
 ```bash
 # 1. Установка системных зависимостей
@@ -546,7 +558,7 @@ chmod +x chromedriver-linux64/chromedriver-linux64/chromedriver
 #### Frontend
 
 <details>
-<summary><b>📌 Пошаговая инструкция</b></summary>
+<summary><b>📌 Установка и запуск Frontend</b></summary>
 
 ```bash
 
@@ -630,249 +642,3 @@ npm run dev
 ```
 
 </details>
-
-```
-
-─ rostransnadzor-parser
-   ├─ backend
-   │  ├─ .env
-   │  ├─ .env.example
-   │  ├─ .python-version
-   │  ├─ assets
-   │  │  ├─ ok_button.png
-   │  │  ├─ select_button.png
-   │  │  └─ Thumbs.db
-   │  ├─ chromedriver-linux64
-   │  │  └─ chromedriver-linux64
-   │  │     ├─ chromedriver
-   │  │     ├─ LICENSE.chromedriver
-   │  │     └─ THIRD_PARTY_NOTICES.chromedriver
-   │  ├─ chromedriver-win64
-   │  │  ├─ chromedriver.exe
-   │  │  ├─ LICENSE.chromedriver
-   │  │  └─ THIRD_PARTY_NOTICES.chromedriver
-   │  ├─ data
-   │  │  ├─ .excel_updated
-   │  │  ├─ admin.json
-   │  │  ├─ history.json
-   │  │  └─ tokens.json
-   │  ├─ hash_password.py
-   │  ├─ linux
-   │  │  ├─ install_dependencies.sh
-   │  │  └─ setup_chromedriver.sh
-   │  ├─ main_linux.py
-   │  ├─ main_windows.py
-   │  ├─ output
-   │  │  ├─ Журнал_СКЗИ.json
-   │  │  └─ Журнал_СКЗИ.xlsx
-   │  ├─ parser_15D(undecomposed).py
-   │  ├─ parser_all(undecomposed).py
-   │  ├─ pyproject.toml
-   │  ├─ requirements.txt
-   │  ├─ src
-   │  │  ├─ api
-   │  │  │  ├─ main.py
-   │  │  │  ├─ models
-   │  │  │  │  ├─ schemas.py
-   │  │  │  │  ├─ __init__.py
-   │  │  │  │  └─ __pycache__
-   │  │  │  ├─ routes
-   │  │  │  │  ├─ auth.py
-   │  │  │  │  ├─ history.py
-   │  │  │  │  ├─ parser.py
-   │  │  │  │  ├─ records.py
-   │  │  │  │  ├─ settings.py
-   │  │  │  │  ├─ watcher.py
-   │  │  │  │  ├─ __init__.py
-   │  │  │  │  └─ __pycache__
-   │  │  │  ├─ services
-   │  │  │  │  ├─ data_manager.py
-   │  │  │  │  ├─ excel_watcher
-   │  │  │  │  │  ├─ excel_handler.py
-   │  │  │  │  │  ├─ run_watcher.py
-   │  │  │  │  │  ├─ status_calculator.py
-   │  │  │  │  │  ├─ watcher.py
-   │  │  │  │  │  ├─ websocket_server.py
-   │  │  │  │  │  ├─ __init__.py
-   │  │  │  │  │  └─ __pycache__
-   │  │  │  │  ├─ parser_service.py
-   │  │  │  │  ├─ __init__.py
-   │  │  │  │  └─ __pycache__
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ core
-   │  │  │  ├─ browser_manager.py
-   │  │  │  ├─ config.py
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ data
-   │  │  │  └─ records.json
-   │  │  ├─ export
-   │  │  │  ├─ excel_exporter.py
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ navigation
-   │  │  │  ├─ click_actions.py
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ output
-   │  │  ├─ parsing
-   │  │  │  ├─ data_parser.py
-   │  │  │  ├─ scroll_manager.py
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ recognition
-   │  │  │  ├─ image_recognizer.py
-   │  │  │  ├─ template_manager.py
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ rostransnadzor_parser.egg-info
-   │  │  │  ├─ dependency_links.txt
-   │  │  │  ├─ entry_points.txt
-   │  │  │  ├─ PKG-INFO
-   │  │  │  ├─ requires.txt
-   │  │  │  ├─ SOURCES.txt
-   │  │  │  └─ top_level.txt
-   │  │  ├─ utils
-   │  │  │  ├─ exceptions.py
-   │  │  │  ├─ logger.py
-   │  │  │  ├─ path_utils.py
-   │  │  │  ├─ __init__.py
-   │  │  │  └─ __pycache__
-   │  │  ├─ __init__.py
-   │  │  └─ __pycache__
-   │  ├─ tests
-   │  │  ├─ test_check_excel.py
-   │  │  ├─ test_parser.py
-   │  │  ├─ test_recognizer.py
-   │  │  ├─ test_server.py
-   │  │  └─ __init__.py
-   │  └─ __pycache__
-   ├─ frontend
-   │  ├─ .env
-   │  ├─ .env.example
-   │  ├─ dist
-   │  │  ├─ assets
-   │  │  │  ├─ index-DOYMz_9C.js
-   │  │  │  └─ index-Oro1N9Jm.css
-   │  │  ├─ favicon.svg
-   │  │  ├─ icons.svg
-   │  │  └─ index.html
-   │  ├─ eslint.config.js
-   │  ├─ index.html
-   │  ├─ install_nvm.sh
-   │  ├─ package-lock.json
-   │  ├─ package.json
-   │  ├─ public
-   │  │  ├─ favicon.svg
-   │  │  └─ icons.svg
-   │  ├─ src
-   │  │  ├─ api
-   │  │  │  ├─ apiServices.js
-   │  │  │  ├─ axiosInstance.js
-   │  │  │  └─ index.js
-   │  │  ├─ App.jsx
-   │  │  ├─ App.module.scss
-   │  │  ├─ AppRouter.jsx
-   │  │  ├─ assets
-   │  │  │  ├─ react.svg
-   │  │  │  └─ vite.svg
-   │  │  ├─ components
-   │  │  │  ├─ AuthProvider
-   │  │  │  │  └─ AuthProvider.jsx
-   │  │  │  ├─ features
-   │  │  │  │  ├─ Dashboard
-   │  │  │  │  │  ├─ Dashboard.jsx
-   │  │  │  │  │  └─ Dashboard.module.scss
-   │  │  │  │  ├─ DataTable
-   │  │  │  │  │  ├─ DataTable.jsx
-   │  │  │  │  │  └─ DataTable.module.scss
-   │  │  │  │  ├─ index.js
-   │  │  │  │  ├─ Login
-   │  │  │  │  │  ├─ Login.jsx
-   │  │  │  │  │  └─ Login.module.scss
-   │  │  │  │  ├─ Logs
-   │  │  │  │  │  ├─ Logs.jsx
-   │  │  │  │  │  └─ Logs.module.scss
-   │  │  │  │  ├─ ParserControl
-   │  │  │  │  │  ├─ ParserControl.jsx
-   │  │  │  │  │  └─ ParserControl.module.scss
-   │  │  │  │  └─ ParserHistory
-   │  │  │  │     ├─ ParserHistory.jsx
-   │  │  │  │     └─ ParserHistory.module.scss
-   │  │  │  ├─ layouts
-   │  │  │  │  ├─ Footer
-   │  │  │  │  │  ├─ Footer.jsx
-   │  │  │  │  │  └─ Footer.module.scss
-   │  │  │  │  ├─ Header
-   │  │  │  │  │  ├─ Header.jsx
-   │  │  │  │  │  └─ Header.module.scss
-   │  │  │  │  ├─ index.js
-   │  │  │  │  └─ Layout
-   │  │  │  │     ├─ Layout.jsx
-   │  │  │  │     └─ Layout.module.scss
-   │  │  │  ├─ shared
-   │  │  │  │  ├─ ErrorBoundary
-   │  │  │  │  │  └─ ErrorBoundary.jsx
-   │  │  │  │  ├─ index.js
-   │  │  │  │  ├─ LoadingSpinner
-   │  │  │  │  │  ├─ LoadingSpinner.jsx
-   │  │  │  │  │  └─ LoadingSpinner.module.scss
-   │  │  │  │  └─ Notification
-   │  │  │  │     ├─ Notification.jsx
-   │  │  │  │     └─ Notification.module.scss
-   │  │  │  └─ ui
-   │  │  │     ├─ Button
-   │  │  │     │  ├─ Button.jsx
-   │  │  │     │  └─ Button.module.scss
-   │  │  │     ├─ Card
-   │  │  │     │  ├─ Card.jsx
-   │  │  │     │  └─ Card.module.scss
-   │  │  │     ├─ ConfirmDialog
-   │  │  │     │  ├─ ConfirmDialog.jsx
-   │  │  │     │  └─ ConfirmDialog.module.scss
-   │  │  │     ├─ index.js
-   │  │  │     ├─ Input
-   │  │  │     │  ├─ Input.jsx
-   │  │  │     │  └─ Input.module.scss
-   │  │  │     ├─ Modal
-   │  │  │     │  ├─ Modal.jsx
-   │  │  │     │  └─ Modal.module.scss
-   │  │  │     └─ SearchInput
-   │  │  │        ├─ SearchInput.jsx
-   │  │  │        └─ SearchInput.module.scss
-   │  │  ├─ hooks
-   │  │  │  ├─ index.js
-   │  │  │  ├─ useParser.js
-   │  │  │  └─ useWebSocket.js
-   │  │  ├─ main.jsx
-   │  │  ├─ pages
-   │  │  │  ├─ HomePage
-   │  │  │  │  ├─ HomePage.jsx
-   │  │  │  │  └─ HomePage.module.scss
-   │  │  │  ├─ index.js
-   │  │  │  └─ ParserPage
-   │  │  │     ├─ ParserPage.jsx
-   │  │  │     └─ ParserPage.module.scss
-   │  │  ├─ router
-   │  │  │  └─ index.jsx
-   │  │  ├─ store
-   │  │  │  ├─ index.js
-   │  │  │  ├─ selectors
-   │  │  │  │  ├─ authSelectors.js
-   │  │  │  │  └─ parserSelectors.js
-   │  │  │  └─ slices
-   │  │  │     ├─ authSlice.js
-   │  │  │     ├─ parserSlice.js
-   │  │  │     ├─ settingsSlice.js
-   │  │  │     └─ uiSlice.js
-   │  │  ├─ styles
-   │  │  │  ├─ global.scss
-   │  │  │  └─ variables.scss
-   │  │  └─ utils
-   │  │     ├─ constants.js
-   │  │     └─ helpers.js
-   │  └─ vite.config.js
-   └─ README.md
-
-```
