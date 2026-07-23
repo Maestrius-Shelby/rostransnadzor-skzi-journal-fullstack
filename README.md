@@ -1,8 +1,8 @@
 # 🚀 Парсер Ространснадзор
 
-> Автоматический сбор данных из личного кабинета
-> Поддержка Windows и Linux (altLinux, Ubuntu, Debian)  
-> Fullstack: Python + FastAPI + React SPA
+### Автоматический сбор данных из личного кабинета
+### Поддержка Windows и Linux (altLinux, Ubuntu, Debian)  
+### Fullstack: Python + FastAPI + React SPA
 
 ---
 
@@ -443,9 +443,9 @@ python main_windows.py
 
 </details>
 
-## 🐧 Linux (ALT Linux / Ubuntu / Debian)
+### Linux (ALT Linux / Ubuntu / Debian)
 
-### Backend
+#### Backend
 
 <details> <summary><b>📌 Установка и запуск Backend</b></summary>
 
